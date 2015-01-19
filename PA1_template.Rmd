@@ -80,7 +80,7 @@ median(steps_per_day2)
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-First we add new variable to indicate weekdays and define a new dataframe
+First we define a new dataframe with a new boolean variable to indicate weekdays
 ```{r}
 library(lattice)
 acti3 = na.omit(acti)
@@ -91,7 +91,7 @@ acti_weekends <- acti3[!acti3$weekdays,]
 ```
 
 Next we compute the mean number of steps for weekdays and weekends separately.
-We apply the xyplot function in lattice package demonstrate the result. 
+We apply the xyplot function in lattice package to demonstrate the result. 
 ```{r}
 acti3$avg = 0
 acti3[acti3$weekdays, 'avg'] <- tapply(acti_weekdays$steps, acti_weekdays$interval, FUN =mean, na.rm=TRUE)
